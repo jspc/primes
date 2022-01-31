@@ -5,17 +5,15 @@ import (
 	"fmt"
 	"math/big"
 	"net"
-	"runtime"
 	"sync"
 
 	"golang.org/x/sync/semaphore"
 )
 
 var (
-	maxWorkers = runtime.GOMAXPROCS(0)
-	sem        = semaphore.NewWeighted(int64(maxWorkers - 1))
-	locker     = new(sync.Mutex)
-	largestI   = int64(0)
+	sem      = semaphore.NewWeighted(int64(6))
+	locker   = new(sync.Mutex)
+	largestI = int64(0)
 
 	zero = big.NewInt(0)
 	one  = big.NewInt(1)
@@ -26,6 +24,11 @@ var (
 )
 
 func main() {
+	fmt.Println("hello world <3")
+	defer func() {
+		fmt.Println("bye bye")
+	}()
+
 	go tcpServer()
 
 	ctx := context.Background()
