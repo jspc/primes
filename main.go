@@ -75,7 +75,7 @@ func formatLargest() []byte {
 	v := iI.Exp(two, iI, nil)
 	v.Sub(v, one)
 
-	return []byte(fmt.Sprintf(`{"i":%s,"v":%s,"len(v)":%v}`, iI, v, len(v.String())))
+	return []byte(fmt.Sprintf(`{"i":%d,"v":%s,"len(v)":%v}`, largestI, v, len(v.String())))
 }
 
 // primeish is largely taken from *somewhere* but for the life of me
