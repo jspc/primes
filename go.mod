@@ -6,7 +6,7 @@ require golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 
 require (
 	github.com/google/btree v1.0.1 // indirect
-	github.com/icexin/eggos v0.4.1 // indirect
+	github.com/icexin/eggos v0.4.1
 	github.com/magefile/mage v1.11.0 // indirect
 	github.com/spf13/afero v1.4.0 // indirect
 	golang.org/x/image v0.0.0-20200801110659-972c09e46d76 // indirect

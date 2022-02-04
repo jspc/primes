@@ -7,6 +7,7 @@ import (
 	"net"
 	"sync"
 
+	"github.com/icexin/eggos/inet"
 	"golang.org/x/sync/semaphore"
 )
 
@@ -24,6 +25,8 @@ var (
 )
 
 func main() {
+	inet.Init()
+
 	fmt.Println("hello world <3")
 	defer func() {
 		fmt.Println("bye bye")
