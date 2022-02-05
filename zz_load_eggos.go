@@ -12,6 +12,7 @@ import (
 	"github.com/icexin/eggos/drivers/pci"
 	"github.com/icexin/eggos/drivers/uart"
 	"github.com/icexin/eggos/drivers/vbe"
+	"github.com/icexin/eggos/fs"
 	"github.com/icexin/eggos/inet"
 	"github.com/icexin/eggos/kernel"
 )
@@ -25,6 +26,7 @@ func kernelInit() {
 	uart.Init()
 	console.Init()
 
+	fs.Init()
 	vbe.Init()
 	fbcga.Init()
 	pci.Init()
