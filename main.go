@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"math/big"
 	"net"
 	"sync"
 
+	eggosLog "github.com/icexin/eggos/log"
 	"golang.org/x/sync/semaphore"
 )
 
@@ -23,10 +25,17 @@ var (
 	step  = one
 )
 
+func init() {
+	err := eggosLog.SetLevel(eggosLog.LoglvlDebug)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
-	fmt.Println("hello world <3")
+	log.Print("hello world <3")
 	defer func() {
-		fmt.Println("bye bye")
+		log.Print("bye bye")
 	}()
 
 	go tcpServer()
