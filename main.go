@@ -20,9 +20,6 @@ var (
 	zero = big.NewInt(0)
 	one  = big.NewInt(1)
 	two  = big.NewInt(2)
-
-	start = two
-	step  = one
 )
 
 func init() {
@@ -43,7 +40,11 @@ func main() {
 	ctx := context.Background()
 
 	for i := int64(0); ; i++ {
-		sem.Acquire(ctx, 1)
+		err := sem.Acquire(ctx, 1)
+		if err != nil {
+			panic(err)
+		}
+
 		go func(i int64) {
 			defer sem.Release(1)
 
@@ -58,6 +59,7 @@ func main() {
 }
 
 func tcpServer() {
+	//#nosec
 	l, err := net.Listen("tcp", "0.0.0.0:11111")
 	if err != nil {
 		panic(err)
@@ -69,8 +71,15 @@ func tcpServer() {
 			panic(err)
 		}
 
-		conn.Write(formatLargest())
-		conn.Close()
+		_, err = conn.Write(formatLargest())
+		if err != nil {
+			panic(err)
+		}
+
+		err = conn.Close()
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 
