@@ -21,8 +21,11 @@ jobs:
 
     - name: Build
       run: |
-        go install github.com/icexin/eggos/cmd/egg@latest
+        go get github.com/icexin/eggos/cmd/egg@latest
+
         alias go1.16.13=go
+        echo alias go1.16.13=go >> ~/.bashrc
+
         make primes.iso
 
     - name: Test
